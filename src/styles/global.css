@@ -1,0 +1,242 @@
+/* src/styles/global.css */
+
+/* 1. Reset Básico para consistencia */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* 2. Tipografía y Colores Base */
+:root {
+    --color-primary: #000000;      /* Texto principal: Negro Absoluto */
+    --color-secondary: #5C5C5C;    /* Texto secundario: Gris oscuro */
+    --color-background: #F4F4F4;   /* Fondo: Gris casi blanco */
+    --color-accent: #FF6B6B;       /* Acento: Rojo/Coral */
+    --font-primary: 'Inter', sans-serif; /* Fuente profesional y legible */
+    --spacing-lg: 3rem;
+}
+
+html {
+    font-size: 100%; /* Base para accesibilidad */
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-background);
+    color: var(--color-primary);
+    line-height: 1.6;
+    min-height: 100vh; /* Para que el fondo cubra toda la pantalla */
+}
+
+/* 3. Estilos Específicos para el Home */
+.home-hero {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Alineación izquierda, como en el sitio de inspiración */
+    padding: var(--spacing-lg) 10%; 
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 6vw, 5rem); /* Tamaño que se ajusta perfectamente */
+    font-weight: 800;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: var(--color-secondary);
+    margin-bottom: 2rem;
+}
+
+/* 4. Botones: Claros y Táctiles (UX) */
+.primary-button, .secondary-button {
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin-right: 1rem; /* Espacio entre botones */
+}
+
+.primary-button {
+    background-color: var(--color-primary);
+    color: var(--color-background);
+    border: 2px solid var(--color-primary);
+}
+
+.primary-button:hover {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    cursor: pointer;
+}
+
+/* ---------------------------------- */
+/* 🧭 6. Estilos de Cabecera (Header) */
+/* ---------------------------------- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 10%; /* Espaciado generoso (UX) */
+    position: sticky; /* Se pega en la parte superior al hacer scroll */
+    top: 0;
+    background-color: var(--color-background);
+    z-index: 1000; /* Asegura que esté por encima de todo */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Separador sutil */
+}
+
+/* Logo Personalizado (Tu Inicial.) */
+.logo-link {
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.logo-text {
+    color: var(--color-primary);
+}
+.logo-dot {
+    color: var(--color-accent); /* El toque de color único */
+    margin-left: -5px; /* Para que el punto esté muy cerca de la letra */
+}
+
+/* Navegación (Menu) */
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 2rem; /* Espacio entre items (Legibilidad UX) */
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--color-primary);
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 0.5rem 0;
+}
+
+.nav-link:hover {
+    color: var(--color-accent); /* Microinteracción (UX) */
+}
+
+/* ---------------------------------- */
+/* 👣 7. Estilos de Pie de Página (Footer) */
+/* ---------------------------------- */
+.main-footer {
+    padding: 3rem 10%; /* */
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--color-secondary);
+    background-color: var(--color-background); /* Asegura que el color de fondo sea el correcto */
+    font-size: 0.9rem;
+}
+
+.footer-content-wrapper {
+    display: grid;
+    /* Divide el footer en 3 columnas: 1 columna grande para la marca, 2 columnas para enlaces */
+    grid-template-columns: 2fr 1fr 1fr; 
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.footer-heading {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-list li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-link {
+    color: var(--color-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-block; 
+}
+
+.footer-link:hover {
+    color: var(--color-accent);
+}
+
+.footer-logo-link {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.footer-copyright {
+    line-height: 1.4;
+    font-size: 0.8rem;
+    margin-top: 1rem;
+}
+
+/* ---------------------------------- */
+/* 📱 Responsive para Footer */
+/* ---------------------------------- */
+@media (max-width: 768px) {
+    .footer-content-wrapper {
+        /* En móvil, apilamos los grupos en una sola columna */
+        grid-template-columns: 1fr; 
+        gap: 2.5rem;
+        text-align: center;
+    }
+    .footer-brand {
+        order: 3; /* Pone el copyright al final */
+        margin-top: 1rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+        padding-top: 2rem;
+    }
+    .footer-links-group {
+        text-align: center;
+    }
+    .footer-list li {
+        display: inline-block; /* Para que los enlaces sean horizontales */
+        margin: 0 0.5rem;
+    }
+    .legal-nav .footer-list, .social-nav .footer-list {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+/* ---------------------------------- */
+/* 🖼️ 8. Estilos Generales de Página */
+/* ---------------------------------- */
+.page-container {
+    padding: 4rem 10%;
+    min-height: 70vh; /* Para empujar el footer hacia abajo */
+}
+.page-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+.page-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-secondary);
+    margin-bottom: 2rem;
+}
+
+/* Grid de Proyectos */
+.project-grid {
+    display: grid;
+    /* Diseñado para que quepa 1 o 2 columnas según el tamaño de la pantalla */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 3rem; /* Espaciado moderno */
+}
